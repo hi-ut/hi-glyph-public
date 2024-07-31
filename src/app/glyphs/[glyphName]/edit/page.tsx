@@ -1,4 +1,6 @@
+import { authOptions } from "@/lib/auth-option";
 import { prisma } from "@/lib/db/prisma";
+import { getServerSession } from "next-auth";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 // import EditorComp from "./EditorComp";
@@ -18,8 +20,15 @@ async function glyphModifyPage({ params }: { params: { glyphName: string } }) {
     redirect(`/glyphs/${glyphName}/create`);
   }
 
+  const session = await getServerSession(authOptions);
 
-  console.log({ glyphData });
+  if (!session) {
+    redirect(`/glyphs/${glyphName}`);
+  }
+
+  if (session?.user?.id !== glyphData.creatorId && session?.user?.role !== "ADMIN") {
+    redirect(`/glyphs/${glyphName}`);
+  }
 
   return (
     <EditorComp

@@ -14,8 +14,8 @@ export default withAuth((request) => {
 
 export const config = {
   matcher: [
-    "/user/:path*",
+    // "/user/:path*",
     "/admin/:path*",
-    "/glyphs/add",
+    // "/glyphs/add",
   ],
 };

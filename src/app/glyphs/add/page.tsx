@@ -4,12 +4,20 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import AddGlyphForm from "./form";
 import { KageEditor } from "kage-editor-comp";
+import { useSession } from "next-auth/react";
 
 function GlyphAddPage() {
   const searchParams = useSearchParams();
   const name = searchParams?.get("name") as string;
   const related = searchParams?.get("related") as string;
   const [data, setData] = useState(searchParams?.get("data") as string);
+
+  const { data: session, status } = useSession();
+
+  if (status === "unauthenticated") {
+    return <div>please signed in</div>;
+  }
+
 
   useEffect(() => {
     localStorage.setItem("kage-editor-data", data);
