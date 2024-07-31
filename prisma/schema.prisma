@@ -3,63 +3,43 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  // directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String    @id @default(cuid())
-  email     String    @unique
-  name      String?
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
-  role      User_role @default(USER)
-  createdGlyphs GlyphData[] @relation( "Creator")
-  updatedGlyphs GlyphData[] @relation( "Editor")
+  id            String      @id @default(cuid())
+  email         String      @unique
+  name          String?
+  password      String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime?   @updatedAt
+  roleId        String      @default("user")
+  role          UserRole    @relation(fields: [roleId], references: [id])
+  createdGlyphs GlyphData[] @relation("Creator")
+  updatedGlyphs GlyphData[] @relation("Editor")
 }
 
 model GlyphData {
   id        Int       @id @default(autoincrement())
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
-  
+
   creatorId String?
-  creator User? @relation( "Creator",fields: [creatorId], references: [id])
+  creator   User?   @relation("Creator", fields: [creatorId], references: [id])
 
   lastEditorId String?
-  lastEditor User? @relation("Editor",fields: [lastEditorId], references: [id])
+  lastEditor   User?   @relation("Editor", fields: [lastEditorId], references: [id])
 
   name    String  @unique
   related String?
-  data    String? @db.Text
+  data    String?
 
-  publicAccess     Boolean               @default(false)
-  refereneceImages GlyphReferenceImage[]
+  publicAccess Boolean @default(false)
 }
 
-model GlyphReferenceImage {
-  id        String                     @id @default(cuid())
-  createdAt DateTime                   @default(now())
-  updatedAt DateTime?                  @updatedAt
-  url       String
-  type      Glyph_reference_image_type @default(OTHERS)
-  remarks   String?                    @db.Text
-  glyphId   Int
-  glyph     GlyphData                  @relation(fields: [glyphId], references: [id], onDelete: Cascade)
-
-  @@index([glyphId])
-}
-
-enum Glyph_reference_image_type {
-  MOJIKYO
-  UNICODE
-  OTHERS
-}
-
-enum User_role {
-  USER
-  ADVANCED_USER
-  ADMIN
+// Enum work for sqlite
+model UserRole {
+  id    String @id
+  users User[]
 }
