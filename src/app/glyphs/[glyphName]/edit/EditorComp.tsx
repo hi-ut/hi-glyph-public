@@ -8,13 +8,11 @@ function EditorComp({
   related,
   data,
   publicAccess,
-  refImgUrls,
 }: {
   name: string;
   related: string;
   data: string;
   publicAccess?: boolean;
-  refImgUrls: string[];
 }) {
   const [glyphData, setGlyphData] = useState(data);
 
@@ -35,7 +33,6 @@ function EditorComp({
           related={related}
           data={glyphData}
           publicAccess={publicAccess}
-          refImgUrls={refImgUrls}
         />
         <KageEditor
           // host="http://localhost:3000/api"

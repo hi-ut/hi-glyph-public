@@ -12,20 +12,12 @@ async function glyphModifyPage({ params }: { params: { glyphName: string } }) {
     where: {
       name: glyphName,
     },
-    include: {
-      refereneceImages: {
-        select: {
-          url: true,
-        },
-      },
-    },
   });
 
   if (!glyphData) {
     redirect(`/glyphs/${glyphName}/create`);
   }
 
-  const refImgUrls = glyphData.refereneceImages.map((img) => img.url);
 
   console.log({ glyphData });
 
@@ -35,7 +27,6 @@ async function glyphModifyPage({ params }: { params: { glyphName: string } }) {
       related={glyphData.related as string}
       data={glyphData.data as string}
       publicAccess={glyphData.publicAccess}
-      refImgUrls={refImgUrls}
     />
   );
 }
