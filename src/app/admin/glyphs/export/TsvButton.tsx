@@ -4,17 +4,17 @@ import { GlyphData } from "@prisma/client";
 
 interface Props {
   className?: string;
-  label?: string;
+  label: string;
   data: GlyphData[];
 }
-function DownloadButton({ className, label, data }: Props) {
+function TsvButton({ className, label, data }: Props) {
   const exportTsv = (data: GlyphData[]) => {
     const tsvContent =
       "data:text/csv;charset=utf-8," +
+      "name\trelated\tdata\n" +
       data
         .map((glyph) => {
-          return `${glyph.name}\t${glyph.related}\t${glyph.data}
-      `;
+          return `${glyph.name}\t${glyph.related}\t${glyph.data}\n`;
         })
         .join("");
     const encodedUri = encodeURI(tsvContent);
@@ -32,4 +32,4 @@ function DownloadButton({ className, label, data }: Props) {
   );
 }
 
-export default DownloadButton;
+export default TsvButton;
