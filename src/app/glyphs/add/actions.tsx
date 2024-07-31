@@ -12,15 +12,9 @@ export async function addGlyph(formData: FormData) {
   const publicAccessStr = formData.get("publicAccess") as string;
   const publicAccess = publicAccessStr === "on" ? true : false;
   let data = formData.get("glyphData") as string;
-  const refImgUrls = formData.get("refImgUrls") as string;
 
   if (data) {
     data = data.trim().replaceAll(/\r\n/g, "$").replaceAll(/\n/g, "$");
-  }
-
-  let refImgUrlArr: string[] | undefined = undefined;
-  if (refImgUrls) {
-    refImgUrlArr = refImgUrls.trim().split(/\r\n|\n/);
   }
 
   const session = await getServerSession(authOptions)
@@ -30,18 +24,20 @@ export async function addGlyph(formData: FormData) {
   if (!userId) {
     throw new Error("ログインしてください");
   }
+
+  console.log({ name, related, data, publicAccess, userId });
   
 
-  await createGlyph({
-    name,
-    related,
-    data,
-    // TODO: creatorIdを設定する
-    creatorId: userId,
-    publicAccess,
-    // TODO: refImgUrlsを設定する
-    // refImgUrls: refImgUrlArr,
-  });
+  // await createGlyph({
+  //   name,
+  //   related,
+  //   data,
+  //   // TODO: creatorIdを設定する
+  //   creatorId: userId,
+  //   publicAccess,
+  //   // TODO: refImgUrlsを設定する
+  //   // refImgUrls: refImgUrlArr,
+  // });
 
-  redirect(`/glyphs/${name}`);
+  // redirect(`/glyphs/${name}`);
 }

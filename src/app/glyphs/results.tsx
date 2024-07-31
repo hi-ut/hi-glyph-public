@@ -156,8 +156,9 @@ function Results({ glyphs }: { glyphs: GlyphDataWithCreator[] }) {
       <div className="flex flex-col gap-4 max-w-7xl py-4">
         <div className="flex justify-between items-end gap-3">
           <Input placeholder="検索" />
+
           <div className="flex gap-3">
-            <Dropdown>
+            {/* <Dropdown>
               <DropdownTrigger>
                 <Button
                   variant="flat"
@@ -184,7 +185,7 @@ function Results({ glyphs }: { glyphs: GlyphDataWithCreator[] }) {
               <Button as={Link} href="/glyphs/add" color="danger">
                 削除
               </Button>
-            </ButtonGroup>
+            </ButtonGroup> */}
             <Button as={Link} href="/glyphs/add" color="primary">
               作成
             </Button>
@@ -192,7 +193,7 @@ function Results({ glyphs }: { glyphs: GlyphDataWithCreator[] }) {
         </div>
         <div className="flex justify-between items-center">
           <span>結果数：{length}</span>
-          <div>rows per page</div>
+          {/* <div>rows per page</div> */}
         </div>
       </div>
     );

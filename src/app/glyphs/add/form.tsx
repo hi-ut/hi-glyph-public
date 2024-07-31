@@ -77,15 +77,6 @@ export default function AddGlyphForm({
             公開
           </Switch>
 
-          <Textarea
-            name="refImgUrls"
-            id="refImgUrls"
-            label="参考画像URL"
-            labelPlacement="outside"
-            placeholder="複数の場合、改行で区切ってください"
-            defaultValue={refImgUrls}
-          />
-
           <div className="flex justify-center gap-8">
             <Button color="primary" type="submit" className="w-24">
               {type === "create" ? "作成" : "更新"}

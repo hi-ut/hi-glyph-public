@@ -1,7 +1,5 @@
 import { GlyphSvg } from "@/components/GlyphSvg";
 import { prisma } from "@/lib/db/prisma";
-import ImageUrlList from "./image-url-list";
-import RefImagesList from "./ref-images-list";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { getServerSession } from "next-auth";
@@ -21,13 +19,6 @@ async function glyphItemPage({ params }: { params: { glyphName: string } }) {
       name: glyphName,
       publicAccess:canAccess?undefined:true,
     },
-    include: {
-      refereneceImages: {
-        select: {
-          url: true,
-        },
-      },
-    },
   });
 
   if (!glyphData) {
@@ -41,8 +32,6 @@ async function glyphItemPage({ params }: { params: { glyphName: string } }) {
       </div>
     );
   }
-
-  const refImgUrls = glyphData.refereneceImages.map((img) => img.url) || [];
 
 
   return (
@@ -74,10 +63,6 @@ async function glyphItemPage({ params }: { params: { glyphName: string } }) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-20">
-        <ImageUrlList name={glyphName} host={host} />
-        <RefImagesList list={refImgUrls} />
-      </div>
     </div>
   );
 }

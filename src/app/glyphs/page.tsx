@@ -12,7 +12,7 @@ interface SearchParams {
 async function glyphsHome({ searchParams }: { searchParams: SearchParams }) {
   const { name, related } = searchParams;
 
-  const advancedRoles = ["ADMIN", "ADVANCED_USER"];
+  const advancedRoles = ["ADMIN", "ADVANCED_USER",];
   const session = await getServerSession(authOptions);
   const userRole = session?.user?.role;
   const showAll = userRole !== undefined && advancedRoles.includes(userRole);
