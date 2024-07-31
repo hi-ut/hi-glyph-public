@@ -14,7 +14,6 @@ interface GlyphFromProps {
   related?: string;
   data?: string;
   publicAccess?: boolean;
-  refImgUrls?: string[];
 }
 
 function GlyphForm({
@@ -23,7 +22,6 @@ function GlyphForm({
   related,
   data,
   publicAccess,
-  refImgUrls,
 }: GlyphFromProps) {
   data = data?.replaceAll(/\$/g, "\n");
   const [glyphData, setGlyphData] = useState(data);
@@ -73,15 +71,6 @@ function GlyphForm({
           <Switch name="publicAccess" id="publicAccess" isSelected={isPublicAccess} onValueChange={setPublicAccess}>
             公開
           </Switch>
-
-          <Textarea
-            name="refImgUrls"
-            id="refImgUrls"
-            label="参考画像URL"
-            labelPlacement="outside"
-            placeholder="複数の場合、改行で区切ってください"
-            defaultValue={refImgUrls?.join("\n")}
-          />
 
           <div className="flex justify-center gap-8">
             <Button color="primary" type="submit" className="w-24">

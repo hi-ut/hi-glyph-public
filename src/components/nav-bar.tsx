@@ -25,19 +25,19 @@ export default function NavBar() {
 
   const links = [
     {
-      name: "ホーム",
+      name: "Home",
       href: "/",
     },
     {
-      name: "漢字符号",
+      name: "Related Characters",
       href: "/characters",
     },
     {
-      name: "字形リスト",
+      name: "Glyphs",
       href: "/glyphs",
     },
     {
-      name: "管理",
+      name: "Admin",
       href: "/admin",
       role: "ADMIN",
     },
@@ -81,20 +81,6 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
-        {/* <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          // startContent={}
-          type="search"
-        /> */}
-
         {session ? (
           <UserDropdown username={username} />
         ) : (
@@ -105,7 +91,7 @@ export default function NavBar() {
               color="secondary"
               variant="flat"
             >
-              登録
+              Register
             </Button>
             <LoginBtn />
           </>
@@ -121,13 +107,6 @@ export default function NavBar() {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 className="w-full"
-                // color={
-                //   index === 2
-                //     ? "warning"
-                //     : index === links.length - 1
-                //     ? "danger"
-                //     : "foreground"
-                // }
                 href={item.href}
                 size="lg"
               >

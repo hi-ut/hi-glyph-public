@@ -25,19 +25,18 @@ export async function addGlyph(formData: FormData) {
     throw new Error("ログインしてください");
   }
 
-  console.log({ name, related, data, publicAccess, userId });
   
 
-  // await createGlyph({
-  //   name,
-  //   related,
-  //   data,
-  //   // TODO: creatorIdを設定する
-  //   creatorId: userId,
-  //   publicAccess,
-  //   // TODO: refImgUrlsを設定する
-  //   // refImgUrls: refImgUrlArr,
-  // });
+  await createGlyph({
+    name,
+    related,
+    data,
+    // TODO: creatorIdを設定する
+    creatorId: userId,
+    publicAccess,
+    // TODO: refImgUrlsを設定する
+    // refImgUrls: refImgUrlArr,
+  });
 
-  // redirect(`/glyphs/${name}`);
+  redirect(`/glyphs/${name}`);
 }

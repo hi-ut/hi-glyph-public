@@ -25,7 +25,7 @@ export default function AddGlyphForm({
 }: Props) {
   data = data?.replaceAll(/\$/g, "\n");
   const [glyphData, setGlyphData] = useState(data);
-  const [isPublicAccess, setPublicAccess] = useState(false);
+  const [publicAccess, setPublicAccess] = useState(true);
 
   useEffect(() => {
     setGlyphData(data);
@@ -71,7 +71,7 @@ export default function AddGlyphForm({
           <Switch
             name="publicAccess"
             id="publicAccess"
-            isSelected={isPublicAccess}
+            isSelected={publicAccess}
             onValueChange={setPublicAccess}
           >
             公開

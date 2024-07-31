@@ -37,10 +37,6 @@ export default function UserAdminTable({ userData }: Props) {
     //   key: "createdAt",
     //   label: "Created At",
     // },
-    // {
-    //   key: "updatedAt",
-    //   label: "Updated At",
-    // },
   ];
 
   return (
