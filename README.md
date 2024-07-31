@@ -18,6 +18,10 @@ pnpm install
 
 DB接続関係は[Prisma](https://www.prisma.io/)のドキュメントに参考
 
+```bash
+npx prisma db push
+```
+
 ### 開発サーバの起動
 
 ```bash
