@@ -35,11 +35,11 @@ function UserDropdown({ username }: Props) {
           key="profile"
           onClick={() => router.push("/user/profile")}
         >
-          プロフィール
+          Profile
         </DropdownItem>
         {/* <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem> */}
         <DropdownItem key="logout" color="danger" onClick={() => signOut()}>
-          ログアウト
+          Logout
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

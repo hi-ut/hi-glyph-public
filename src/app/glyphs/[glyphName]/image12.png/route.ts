@@ -11,11 +11,11 @@ export async function GET(
     where: { name: params.glyphName },
   });
   if (!glyph) {
-    return new NextResponse("字形は見つかりませんでした。", { status: 404 });
+    return new NextResponse("No glyphs were found.", { status: 404 });
   }
 
   if (!glyph.data) {
-    return new NextResponse("字形のデータがありませんでした。", { status: 404 });
+    return new NextResponse("No glyph data was found.", { status: 404 });
   }
 
   const svg = await generateSVG({

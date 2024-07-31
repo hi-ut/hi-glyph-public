@@ -9,7 +9,6 @@ type Props = {
   name?: string;
   related?: string;
   data?: string;
-  refImgUrls?: string;
 };
 
 // TODO add switch for searching server(local or glyphwiki)
@@ -18,7 +17,6 @@ function GlyphEditor(props: Props) {
   const [name, setName] = useState(props.name);
   const [related, setRelated] = useState(props.related);
   const [data, setData] = useState(props.data);
-  const refImgUrls=props.refImgUrls?.split("\n");
 
   return (
     <div className="flex">
@@ -28,7 +26,6 @@ function GlyphEditor(props: Props) {
           name={name as string}
           related={related as string}
           data={data as string}
-          refImgUrls={refImgUrls}
         />
       </div>
       <div>

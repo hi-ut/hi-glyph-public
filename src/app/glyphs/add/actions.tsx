@@ -22,7 +22,7 @@ export async function addGlyph(formData: FormData) {
   const userId = user?.id;
 
   if (!userId) {
-    throw new Error("ログインしてください");
+    throw new Error("Please sign in");
   }
 
   
