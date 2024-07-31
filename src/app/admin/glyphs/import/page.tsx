@@ -1,8 +1,12 @@
 import React from 'react'
+import { UploadForm } from './upload-form'
 
 function glyphImportPage() {
   return (
-    <div>glyphImportPage</div>
+    <div>
+      <h2>up load file</h2>
+      <UploadForm />
+    </div>
   )
 }
 
