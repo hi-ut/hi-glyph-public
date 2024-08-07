@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/db/prisma";
 import { hash } from "bcrypt";
+import { redirect } from "next/navigation";
 
 export async function createUser(userData:FormData) {
   const email = userData.get('email') as string;
@@ -34,5 +35,5 @@ export async function createUser(userData:FormData) {
     }
   });
 
-  return newUser;
+  redirect("/auth/login")
 }
