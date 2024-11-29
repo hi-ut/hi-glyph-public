@@ -1,4 +1,3 @@
-import { get } from "http";
 import { prisma } from "../db/prisma";
 import { getGlyphDataByName } from "../glyphwiki/get-glyph-data";
 
@@ -37,7 +36,7 @@ export async function getPartsInGlyph(
 
             // TODO: use admin user
             const adminUser = await prisma.user.findFirst({
-              where: { email: "toyjack@gmail.com" },
+              where: { email: process.env.ADMIN_EMAIL },
             });
             
             const newGlyph = await prisma.glyphData.create({

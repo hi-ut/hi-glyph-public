@@ -1,5 +1,11 @@
 オープンソース漢字字形管理システムhi-glyph
 
+## 注意
+
+**このプロジェクトは開発中のため、バグが多数存在します。**
+
+**Since this project is still under development, it contains numerous bugs.**
+
 ## 開発
 
 ### ライブラリーのインストール
